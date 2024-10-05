@@ -1,0 +1,67 @@
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "cv_database";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+echo "Connected successfully";
+?>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $skill = $_POST['skill'];
+
+    $sql = "INSERT INTO skills (skill_name) VALUES ('$skill')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "New skill added successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+?>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $skill_id = $_POST['skill_id'];
+
+    $sql = "DELETE FROM skills WHERE id=$skill_id";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Skill deleted successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+?>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $skill_id = $_POST['skill_id'];
+    $new_skill = $_POST['new_skill'];
+
+    $sql = "UPDATE skills SET skill_name='$new_skill' WHERE id=$skill_id";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Skill updated successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+?>
+<?php
+$sql = "SELECT * FROM skills";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        echo "id: " . $row["id"]. " - Skill: " . $row["skill_name"]. "<br>";
+    }
+} else {
+    echo "0 results";
+}
+?>

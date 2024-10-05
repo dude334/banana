@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="personal.html">Personal Information</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="work.html">Work Experience</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Skills</h1>
+        <ul>
+            <li>Statistical Analysis
+                </li> Data Interpretation </li>
+            <li>Risk Management</li>
+        </ul>
+    </main>
+</body>
+</html>
+<form action="add_skill.php" method="post">
+    <label for="skill">Skill:</label>
+    <input type="text" id="skill" name="skill" required>
+    <input type="submit" value="Add Skill">
+</form>
+<form action="delete_skill.php" method="post">
+    <label for="skill_id">Skill ID:</label>
+    <input type="number" id="skill_id" name="skill_id" required>
+    <input type="submit" value="Delete Skill">
+</form>
+<form action="update_skill.php" method="post">
+    <label for="skill_id">Skill ID:</label>
+    <input type="number" id="skill_id" name="skill_id" required>
+    <label for="new_skill">New Skill:</label>
+    <input type="text" id="new_skill" name="new_skill" required>
+    <input type="submit" value="Update Skill">
+</form>
